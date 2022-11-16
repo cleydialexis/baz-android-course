@@ -2,6 +2,7 @@ package com.example.criptos.presentation.CoinList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.criptos.domain.model.Coin
 import com.example.criptos.domain.use_case.CoinListUseCase
 import com.example.criptos.presentation.CoinList.CoinListState
 import com.example.criptos.util.ResponseState
@@ -25,7 +26,7 @@ class CoinListViewModel @Inject constructor(
         coinsUseCase().collect {
             when(it){
                 is ResponseState.Success ->{
-                    coinListValue.value = CoinListState(coinsList = it.data?: emptyList())
+                    coinListValue.value = CoinListState(coinsList = it.data as List<Coin>)
                 }
                 is ResponseState.Loading ->{
                     coinListValue.value = CoinListState(isLoading = true)

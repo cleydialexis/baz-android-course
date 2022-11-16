@@ -28,7 +28,7 @@ class CoinActivity : AppCompatActivity() {
         if(intent!=null){
             val id = intent.getStringExtra("id")
             Log.d("insideIntent",id.toString())
-            viewModel.getCoinById("tether")
+            viewModel.getCoinById("book")
             callCoinApi(id.toString())
         }
     }

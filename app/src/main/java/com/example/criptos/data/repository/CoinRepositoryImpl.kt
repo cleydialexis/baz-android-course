@@ -7,7 +7,7 @@ import com.example.criptos.data.data_source.dto.CoinTiketDTO.CoinTiketDto
 import com.example.criptos.domain.repository.CoinRepository
 import javax.inject.Inject
 
-class CoinRepositoryImpl @Inject constructor(
+class CoinRepositoryImpl (
 
     private val api : CoinGeckoApi
 ) : CoinRepository {

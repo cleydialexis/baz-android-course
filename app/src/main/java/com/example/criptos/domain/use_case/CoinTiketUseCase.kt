@@ -19,7 +19,7 @@ class CoinTiketUseCase @Inject constructor(
             val tikets = repository.getCoinTikesId().map {
                 it.toTiket()
             }
-            emit(ResponseState.Success<List<Tiket>>(tikets))
+        //    emit(ResponseState.Success<List<Tiket>>(tikets))
         } catch (e: HttpException) {
             emit(ResponseState.Error<List<Tiket>>(e.localizedMessage ?: "An Unexpected Error"))
         } catch (e: IOException) {

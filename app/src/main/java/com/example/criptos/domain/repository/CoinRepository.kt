@@ -1,6 +1,6 @@
 package com.example.criptos.domain.repository
 
-import com.example.criptos.data.data_source.dto.CoinDetailDTO.CoinDetailDto
+
 import com.example.criptos.data.data_source.dto.CoinListDTO.CoinListDto
 import com.example.criptos.data.data_source.dto.CoinOrderDTO.CoinOrderDto
 import com.example.criptos.data.data_source.dto.CoinTiketDTO.CoinTiketDto

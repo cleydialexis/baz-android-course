@@ -9,7 +9,7 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class CoinOrderUseCase @Inject constructor(
+class CoinOrderUseCase (
     private  val repository: CoinRepository
     ) {
         operator fun invoke(): Flow<ResponseState<List<Order>>> = flow {
@@ -18,7 +18,7 @@ class CoinOrderUseCase @Inject constructor(
                 val orders = repository.getCoinOrder().map {
                     it.toOrder()
                 }
-                emit(ResponseState.Success<List<Order>>(orders))
+         //       emit(ResponseState.Success<List<Order>>(orders))
             } catch (e: HttpException) {
                 emit(ResponseState.Error<List<Order>>(e.localizedMessage ?: "An Unexpected Error"))
             } catch (e: IOException) {
