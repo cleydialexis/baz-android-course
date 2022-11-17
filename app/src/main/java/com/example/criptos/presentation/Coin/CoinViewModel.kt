@@ -2,7 +2,6 @@ package com.example.criptos.presentation.Coin
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.criptos.domain.use_case.CoinUseCase
 import com.example.criptos.util.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

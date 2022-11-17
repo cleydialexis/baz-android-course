@@ -2,7 +2,6 @@ package com.example.criptos.presentation.CoinList
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +10,14 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.criptos.R
 
-import com.example.criptos.domain.model.Coin
-import com.example.criptos.presentation.Coin.CoinActivity
-import com.squareup.picasso.Picasso
+import com.example.criptos.domain.model.Book
+
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CoinAdapter(private val context: Context, var coinsList : ArrayList<Coin>)
+class CoinAdapter(private val context: Context, var coinsList : ArrayList<Book>)
     :RecyclerView.Adapter<CoinAdapter.CoinViewHolder>(),Filterable {
-    lateinit var filteredList : ArrayList<Coin>
+    lateinit var filteredList : ArrayList<Book>
     inner class CoinViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val coinLayout: LinearLayout = view.findViewById(R.id.coinLinearLayout)
         val coinImage: ImageView = view.findViewById(R.id.imgCoinImage)
@@ -33,14 +31,14 @@ class CoinAdapter(private val context: Context, var coinsList : ArrayList<Coin>)
     }
 
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
-        val list = coinsList[position]
+     /*   val list = coinsList[position]
         holder.coinName.text = list.book
         Picasso.get().load(list.book).into(holder.coinImage)
         holder.coinLayout.setOnClickListener {
             val intent = Intent(context, CoinActivity::class.java)
             intent.putExtra("id", list.book)
             context.startActivity(intent)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
@@ -48,7 +46,7 @@ class CoinAdapter(private val context: Context, var coinsList : ArrayList<Coin>)
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(list: ArrayList<Coin>) {
+    fun setData(list: ArrayList<Book>) {
         this.filteredList = list
         this.coinsList = list
         notifyDataSetChanged()
@@ -61,12 +59,12 @@ class CoinAdapter(private val context: Context, var coinsList : ArrayList<Coin>)
                 if (string.isNotEmpty()) {
                     Log.d("coinsFirst",coinsList.size.toString())
                     Log.d("coinsSecond",filteredList.size.toString())
-                    var arrayList = arrayListOf<Coin>()
-                    filteredList.filter {
+                    var arrayList = arrayListOf<Book>()
+                 /*   filteredList.filter {
                         it.book.lowercase().contains(string.lowercase())
                     }.forEach{
                         arrayList.add(it)
-                    }
+                    }*/
                     filteredList.clear()
                     filteredList.addAll(arrayList)
                 }
@@ -80,7 +78,7 @@ class CoinAdapter(private val context: Context, var coinsList : ArrayList<Coin>)
             @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 (if (results?.values == null)
-                    ArrayList<Coin>()
+                    ArrayList<Book>()
                 else {
                     setData(filteredList)
                 })

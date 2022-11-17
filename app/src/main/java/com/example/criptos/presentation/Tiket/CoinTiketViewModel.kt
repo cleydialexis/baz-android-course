@@ -2,17 +2,14 @@ package com.example.criptos.presentation.Tiket
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.criptos.domain.model.Coin
-import com.example.criptos.domain.use_case.CoinListUseCase
+import com.example.criptos.domain.model.Book
 import com.example.criptos.presentation.CoinList.CoinListState
 import com.example.criptos.util.ResponseState
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 //@HiltViewModel
 class CoinTViewModel(
@@ -26,7 +23,7 @@ class CoinTViewModel(
         coinsUseCase().collect {
             when(it){
                 is ResponseState.Success ->{
-                    coinTiketValue.value = CoinListState(coinsList = it.data as List<Coin>)
+                    coinTiketValue.value = CoinListState(coinsList = it.data as List<Book>)
                 }
                 is ResponseState.Loading ->{
                     coinTiketValue.value = CoinListState(isLoading = true)

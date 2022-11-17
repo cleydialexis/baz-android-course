@@ -7,7 +7,7 @@ import android.view.View
 import androidx.activity.viewModels
 import com.example.criptos.databinding.ActivityCoinBinding
 
-import com.squareup.picasso.Picasso
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -53,7 +53,6 @@ class CoinActivity : AppCompatActivity() {
                                 Log.d("coindetail",value.coinDetail.name)
                                 binding.coinProgressBar.visibility = View.GONE
                                 valueRepeat = 0
-                                Picasso.get().load(value.coinDetail.image).into(binding.imgCoinDetail)
                                 binding.txtCoinNameDetail.text = value.coinDetail.name
                                 binding.txtCoinPrice.text = value.coinDetail.price.toString()
                                 binding.txtCoinPriceLow.text = value.coinDetail.lowPrice.toString()

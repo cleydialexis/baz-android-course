@@ -1,35 +1,24 @@
 package com.example.criptos.data.repository
 
-import com.example.criptos.data.data_source.CoinGeckoApi
-import com.example.criptos.data.data_source.dto.CoinListDTO.CoinListDto
-import com.example.criptos.data.data_source.dto.CoinOrderDTO.CoinOrderDto
-import com.example.criptos.data.data_source.dto.CoinTiketDTO.CoinTiketDto
-import com.example.criptos.domain.repository.CoinRepository
+import com.example.criptos.domain.api.ApiService
+import com.example.criptos.domain.api.BooksDao
+import com.example.criptos.domain.api.CoinsRepository
+import com.example.criptos.domain.repository.model.Book
+import com.example.criptos.util.toBooks
 import javax.inject.Inject
 
-class CoinRepositoryImpl (
+class CoinsRepositoryImpl @Inject constructor(
+private val api: ApiService,
+private val dao: BooksDao
+) : CoinsRepository {
+    override suspend fun getAvailableBooks(): List<Book> =
+        api.getAvailableBooks().toBooks()
 
-    private val api : CoinGeckoApi
-) : CoinRepository {
-    //all Coins
-    override suspend fun getAllCoins(): CoinListDto {
-        return api.getAllCoins()
-    }
-    //all Coins Tikets
-    override suspend fun getCoinTikesId(): CoinTiketDto {
-        return api.getCoinTikets()
-    }
+    override suspend fun insertLocalBooks(book: List<Book>) =
+        dao.insertAllBooks(book)
 
-    override suspend fun getCoinOrder(): CoinOrderDto {
-        return api.getCoinOrders()
-    }
-
-
-   // override suspend fun getCoinById(id: String): CoinDetailDto {
-//
- //       return api.getCoinById(id=id)
-  //  }
-
+    override suspend fun getLocalBooks(): List<Book> =
+        dao.getAvailableLocalBooks()
 
 
 

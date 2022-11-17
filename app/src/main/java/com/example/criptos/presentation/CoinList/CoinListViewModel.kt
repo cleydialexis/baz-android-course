@@ -2,9 +2,7 @@ package com.example.criptos.presentation.CoinList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.criptos.domain.model.Coin
-import com.example.criptos.domain.use_case.CoinListUseCase
-import com.example.criptos.presentation.CoinList.CoinListState
+import com.example.criptos.domain.model.Book
 import com.example.criptos.util.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +24,7 @@ class CoinListViewModel @Inject constructor(
         coinsUseCase().collect {
             when(it){
                 is ResponseState.Success ->{
-                    coinListValue.value = CoinListState(coinsList = it.data as List<Coin>)
+                    coinListValue.value = CoinListState(coinsList = it.data as List<Book>)
                 }
                 is ResponseState.Loading ->{
                     coinListValue.value = CoinListState(isLoading = true)
